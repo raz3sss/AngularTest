@@ -86,12 +86,52 @@
                 <td>{{technology.likes}}</td>
                 <td>{{technology.dislikes}}</td>
                 <td>
-                    <button type="submit" value="Like"></button>
-                    <button type="submit" value="Dislike"></button>
+                    <input type="button" value="Like" ng-click="incrementLikes(technology)"/>
+                    <input type="button" value="Dislike" ng-click="incrementDislikes(technology)"/>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+    <hr />
+
+<div ng-controller="Filter">
+    <p>AngularJS Filters :uppercase, date, lowercase, number, currency, limitTo</p>
+    <p>filter, json, orderBy</p>
+
+    Rows to Display: <input type="number" step="1" min="0" max="5" ng-model="rowLimit" />
+    <br /><br />
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Salary (number)</th>
+                <th>Salary (currency)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees | limitTo:rowLimit">
+                <td>{{employee.name | uppercase}}</td>
+                <td>{{employee.dateOfBirth | date: "dd/MM/yyyy" }}</td>
+                <td>{{employee.gender | lowercase}}</td>
+                <td>{{employee.salary | number:2}}</td>
+                <td>{{employee.salary | currency:"Rs. ":1}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<hr />
+<div>
+    <p>AngularJS Filters: orderBy</p>
+</div>
+
+
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br />
 </body>
 </html>

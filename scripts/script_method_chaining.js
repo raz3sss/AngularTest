@@ -91,3 +91,15 @@ myApp.controller("EventHandling", function ($scope) {
         technology.dislikes++;
     }
 });
+
+myApp.controller("Filter", function ($scope) {
+    var employees = [
+        {name: "Ben", dateOfBirth: new Date("November 23, 1980"), gender: "Male", salary: 55000.788},
+        {name: "Sara", dateOfBirth: new Date("May 05, 1970"), gender: "Female", salary: 57000},
+        {name: "Mark", dateOfBirth: new Date("June 23, 1973"), gender: "Male", salary: 55325},
+        {name: "Pam", dateOfBirth: new Date("August 23, 1985"), gender: "Female", salary: 523654},
+        {name: "Todd", dateOfBirth: new Date("July 7, 1988"), gender: "Male", salary: 4965246}
+    ];
+    $scope.employees = employees;
+    $scope.rowLimit = 3;
+});
