@@ -1,0 +1,97 @@
+<!doctype html>
+<html ng-app="myModule">
+<head>
+    <title>Title</title>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/script_method_chaining.js"></script>
+</head>
+<body>
+    <div ng-controller="myController">
+        <p>1. Using data binding to display the values from controller</p>
+       <div> FirstName: {{employee.firstName}}</div>
+        <div>LastName: {{employee.lastName}}</div>
+        <div>Gender: {{employee.gender}}</div>
+    </div>
+    <hr />
+    <div ng-controller="myFlagController">
+        <p>2. Using data binding to display the images</p>
+        <div>Country: {{country.name}}</div>
+        <div>Capital: {{country.capital}}</div>
+        <img ng-src="{{country.flag}}" style="height: 100px; width: 200px;" alt="{{ country.name  + 'Flag' }}"/>
+    </div>
+<hr />
+<div ng-controller="twoWayDataBinding">
+    <p>3. Using Two way Data Binding</p>
+    <input type="text" ng-model="message" />
+    <br /><br />
+    {{ message }}
+    <p>=====</p>
+
+    <input type="text" ng-model="greetings" />
+    <br /><br />
+    {{ greetings }}
+</div>
+    <hr />
+<div ng-controller="ngRepeatExample">
+    <p>ng-repeat example(similar to foreach loop)</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Gender</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees">
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.salary}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr />
+<div ng-controller="ngRepeatNestedArray">
+    <p>ng-repeat nested array</p>
+    <ul>
+        <li ng-repeat="country in countries">
+            {{country.name}} - Index = {{$index}}
+            <ul>
+               <li ng-repeat="city in country.cities">
+                   {{city.name}} - Parent Index = {{$parent.$index}} Index = {{$index}}
+               </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<hr />
+<div ng-controller="EventHandling">
+    <p>Event Handling</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Likes</th>
+                <th>Dislikes</th>
+                <th>Buttons</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="technology in technologies">
+                <td>{{technology.name}}</td>
+                <td>{{technology.likes}}</td>
+                <td>{{technology.dislikes}}</td>
+                <td>
+                    <button type="submit" value="Like"></button>
+                    <button type="submit" value="Dislike"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
