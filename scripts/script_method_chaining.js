@@ -97,9 +97,51 @@ myApp.controller("Filter", function ($scope) {
         {name: "Ben", dateOfBirth: new Date("November 23, 1980"), gender: "Male", salary: 55000.788},
         {name: "Sara", dateOfBirth: new Date("May 05, 1970"), gender: "Female", salary: 57000},
         {name: "Mark", dateOfBirth: new Date("June 23, 1973"), gender: "Male", salary: 55325},
-        {name: "Pam", dateOfBirth: new Date("August 23, 1985"), gender: "Female", salary: 523654},
+        {name: "Pam", dateOfBirth: new Date("August 23, 1985"), gender: "Female", salary: 583654},
         {name: "Todd", dateOfBirth: new Date("July 7, 1988"), gender: "Male", salary: 4965246}
     ];
     $scope.employees = employees;
     $scope.rowLimit = 3;
+});
+
+myApp.controller("OrderBy", function ($scope) {
+    var employees = [
+        {name: "Ben", dateOfBirth: new Date("November 23, 1980"), gender: "Male", salary: 55000.788},
+        {name: "Sara", dateOfBirth: new Date("May 05, 1970"), gender: "Female", salary: 57000},
+        {name: "Mark", dateOfBirth: new Date("June 23, 1973"), gender: "Male", salary: 55325},
+        {name: "Pam", dateOfBirth: new Date("August 23, 1985"), gender: "Female", salary: 583654},
+        {name: "Todd", dateOfBirth: new Date("July 7, 1988"), gender: "Male", salary: 4965246}
+    ];
+    $scope.employees = employees;
+    $scope.sortColumn = 'name';
+});
+
+myApp.controller("sortingByTableHeader", function ($scope) {
+    var employees = [
+        {name: "Ben", dateOfBirth: new Date("November 23, 1980"), gender: "Male", salary: 55000.788},
+        {name: "Sara", dateOfBirth: new Date("May 05, 1970"), gender: "Female", salary: 57000},
+        {name: "Mark", dateOfBirth: new Date("June 23, 1973"), gender: "Male", salary: 55325},
+        {name: "Pam", dateOfBirth: new Date("August 23, 1985"), gender: "Female", salary: 583654},
+        {name: "Todd", dateOfBirth: new Date("July 7, 1988"), gender: "Male", salary: 4965246}
+    ];
+    $scope.employees = employees;
+    $scope.sortColumn = "name";
+    $scope.reverseSort = false;
+
+    $scope.sortData = function (column) {
+        $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
+        $scope.sortColumn = column;
+    }
+
+    $scope.getSortClass = function (column) {
+        if($scope.sortColumn == column) {
+            return $scope.reverseSort ? 'arrow-down' : 'arrow-up';
+        }
+
+        return '';
+    }
+});
+
+myApp.controller("testRegex", function ($scope) {
+    $scope.text = "000000".replace(/^0+/, '');
 });
